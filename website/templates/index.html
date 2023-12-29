@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quizbowl homepage</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="main-body">
+	<div id="navbar">
+		<a id="home" href="/index.html">Home</a>
+		<a id="playerStats" href="/playerStats.html">Player Stats</a>
+		<a id="register" href="/register.html">Register</a>
+	</div>
+
+	<header id="main-header">
+        <h1>Welcome to Quizbowl!</h1>
+        <p>Test your knowledge in friendly competitions with friends.</p>
+    </header>
+
+	<section id="content-section">
+        <h1 id="heading-one">Get in teams!</h1>
+		<img src="Quizbowl_icon.jpg" alt="Quizbowl icon" id="sample-image">
+
+		<p>Already registered your teams? Enter the IDs for the two competing teams</p>
+		<label for="homeID">Home team: </label>
+		<input type="text" id="homeID" name="homeID" placeholder="(required)" required></input>
+		<br>
+		<label for="awayID">Away team: </label>
+		<input type="text" id="awayID" name="awayID" placeholder="(required)" required></input>
+		<br>
+		<input type="submit" onclick="startGame()"></input>
+
+		<p>New to the game? register your team:</p>
+		<a href="register" target="_blank" id="external-link">Register team</a>
+
+    </section>
+</body>
+
+<script>
+	function fetchPlayers() {
+		let name = document.getElementById("playerName").value
+		const responsePromise = fetch("/player?name=" + name, {
+			method: "GET",
+			headers: {
+				"Content-type": "application/json; charset=UTF-8"
+			}
+		});
+
+		responsePromise.then(
+			async (response) => {
+				populateListPlayer(await response.json())
+			},
+			(error) => {
+				alert("Cannot obtain players")
+			})
+	}
+
+	function startGame() {
+		let home = document.getElementById("homeID").value
+		let away = document.getElementById("awayID").value
+		const responsePromise = fetch("/create-match/?homeID=" + home + "&awayID=" + away, {
+			method: "GET",
+			headers: {
+				"Content-type": "application/json; charset=UTF-8"
+			}
+		});
+
+		responsePromise.then(
+			async (response) => {
+				let dbResult = await response.json()
+				console.log(dbResult)
+				window.location.replace("/match?matchID=" + dbResult.insertId)
+			},
+			(error) => {
+				alert("Failed to start match")
+				console.log(error)
+			})
+	}
+
+	function populateListPlayer(results) {
+		let players = document.getElementById("playerList")
+
+		results.forEach(element => {
+			let player = document.createElement("li")
+			player.innerText = "Name: " + element.name + "; ID: " + element.player_id
+
+			players.appendChild(player)
+			console.log(element)
+		})
+	}
+</script>
+
+</html>
