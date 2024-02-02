@@ -4,9 +4,9 @@
 // Documentation in: https://expressjs.com/en/starter/hello-world.html
 import express, { response } from 'express';
 import { fileURLToPath } from 'url';
-import {dirname} from 'path';
+import path, {dirname} from 'path';
 
-import * as db from "./db_mysql.mjs";
+import * as db from "./db/db_mysql.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,13 +18,13 @@ db.connect();
 
 // Serve static HTML files in the chosen directory
 // Change the filepath if the index.html is moved
-app.use(express.static('./templates/'))
+app.use(express.static(path.join(__dirname,  "../frontend/")))
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views'); // Set the directory where your views (templates) are stored
 
 app.get("/", (request, response) => {
-    response.sendFile(__dirname + "/templates/index.html")
+    response.sendFile("index.html")
 });
 
 // For GET requests to "/player?name=<name>"
@@ -59,13 +59,13 @@ app.get("/match", function(request, response) {
         var matchID = request.query["matchID"]
         db.initializePlayerScore(username, matchID);
       }
-      response.render('match', {"results": results})
+      response.render(path.join(__dirname,  "../views/match"), {"results": results})
   })
 
 });
 
 app.get("/register", function(request, response) {
-    response.sendFile(__dirname + "/templates/register.html")
+    response.sendFile("register.html")
     console.log("Register Page")
 });
 

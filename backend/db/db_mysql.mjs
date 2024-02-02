@@ -3,12 +3,16 @@
 
 import { createConnection } from 'mysql2';
 import fs from "fs"
+import { fileURLToPath } from 'url';
+import path, {dirname} from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 var connection = createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'fakePassword', // to securely store database password
-	database: 'fakeDatabase' // to securely store database name
+	password: 'password', // to securely store database password
+	database: 'database' // to securely store database name
 });
 
 
@@ -113,7 +117,7 @@ function updatePlayerScore(numPowersOnTossup, numTensOnTossup, numNegsOnTossup, 
 
 function getPlayerStats(playerID, callback) {
 	// Read the SQL file
-	let sqlQueries = fs.readFileSync('../tests/PlayerStats.sql', 'utf8');
+	let sqlQueries = fs.readFileSync(path.join(__dirname,  "/../../tests/PlayerStats.sql"), 'utf8');
 
 	// Split the file content by semicolon to get individual queries
 	let queriesArray = sqlQueries.split(';');
@@ -125,8 +129,9 @@ function getPlayerStats(playerID, callback) {
 }
 
 function getPlayersFromMatch(matchID, callback) {
+	console.log(__dirname);
 	// Read the SQL file
-	let sqlString = fs.readFileSync('../queries/getPlayerAndTeamNamesFromMatchID.sql', 'utf8');
+	let sqlString = fs.readFileSync(path.join(__dirname,  "/queries/getPlayerAndTeamNamesFromMatchID.sql"), 'utf8');
 
 	let query = sqlString.replace("<match_id>", "?")
 	connection.query(query,[matchID], (error, results, fields) => {
