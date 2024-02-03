@@ -10,3 +10,4 @@ FROM
 		ON team.team_id = playson.team_id 			
 WHERE qb_match.match_id = <match_id> 
 ORDER BY team.name DESC;
+

@@ -3,9 +3,6 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import path, {dirname} from 'path';
 
-// Import database
-import * as db from "./db/db_mysql.mjs";
-
 // Import routes
 import routes from './routes/routes.mjs';
 
@@ -21,9 +18,6 @@ app.set('views', path.join(__dirname, '/../views')); // Set the directory where 
 // Use middleware
 app.use(express.static(path.join(__dirname,  "../frontend/")))
 
-// Connect to database
-db.connect();
-
 // Use routes
 app.use('/', routes)
 
@@ -35,7 +29,6 @@ app.listen(port, () => {
   console.log('Server is starting on PORT,', port)
 })
 
-// When server stops, disconnect connection to database
 process.on('exit', () => {
-  db.disconnect()
+  console.log('Server is stopping')
 })

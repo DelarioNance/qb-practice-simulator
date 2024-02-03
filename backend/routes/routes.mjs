@@ -5,7 +5,7 @@ const __dirname = dirname(__filename);
 import express from 'express';
 const router = express.Router();
 
-import * as db from "../db/db_mysql.mjs";
+import * as routines from "../database/routines/js/routines.mjs";
 
 router.get("/", (request, response) => {
   response.sendFile("index.html")
@@ -15,7 +15,7 @@ router.get("/", (request, response) => {
 router.get('/player', function(request, response){
   let name = request.query["name"]
 
-  db.getAllPlayersByName(name, (results) => {
+  routines.getAllPlayersByName(name, (results) => {
       response.json(results)
   })
 });
@@ -24,7 +24,7 @@ router.get('/create-match', function(request, response){
   let homeID = request.query["homeID"]
   let awayID = request.query["awayID"]
 
-  db.createNewMatch(homeID, awayID, (results) => {
+  routines.createNewMatch(homeID, awayID, (results) => {
       response.json(results)
   })
 });
@@ -34,12 +34,12 @@ router.get("/match", function(request, response) {
   var matchID = request.query["matchID"]
 
   // Query the database to get info about the match
-  db.getPlayersFromMatch(matchID, (results) => {
+  routines.getPlayersFromMatch(matchID, (results) => {
 
     for (const row of results) {
       let username = row["username"]
       var matchID = request.query["matchID"]
-      db.initializePlayerScore(username, matchID);
+      routines.initializePlayerScore(username, matchID);
     }
     response.render(path.join(__dirname, '..', '..', 'views/match'), {"results": results})
   });
@@ -47,13 +47,12 @@ router.get("/match", function(request, response) {
 
 router.get("/register", function(request, response) {
   response.sendFile("register.html")
-  console.log("Register Page")
 });
 
 router.get("/stats", function(request, response) {
   let playerID = request.query["playerID"];
 
-  db.getPlayerStats(playerID, (results) => {
+  routines.getPlayerStats(playerID, (results) => {
     response.json(results)
   });
 
@@ -65,12 +64,12 @@ let major = request.query["major"]
 let minor = request.query["minor"]
 
 // Insert player data into player relation
-db.createPlayer(username, major, minor, (results) => {
+routines.createPlayer(username, major, minor, (results) => {
   response.json(results)   
 })
 })
 
-// Calls db.create_team() and then db.insertIntoPlaysOn 
+// Calls routines.create_team() and then routines.insertIntoPlaysOn 
 //    for each non-null player entered from the form
 router.get("/create-team", function(request, response) {
 let name = request.query["name"]
@@ -84,14 +83,12 @@ let playerUsernames = [
 ]
 
 // Insert team data into team relation
-db.createTeam(name, school, (results) => {
-  console.log(results)
-
+routines.createTeam(name, school, (results) => {
   for (var player of playerUsernames) {
     if (player === '') {
       continue;
     } 
-    db.insertIntoPlaysOn(player, results["insertId"])
+    routines.insertIntoPlaysOn(player, results["insertId"])
   }
 
   response.json(results)
@@ -102,7 +99,7 @@ router.get("/initialize-player-score", function(request, response) {
 let username = request.query["username"]
 let matchID = request.query["matchID"]
 
-db.initializePlayerScore(username, matchID, (results) => {
+routines.initializePlayerScore(username, matchID, (results) => {
   response.json(results)
 })
 })
@@ -114,7 +111,7 @@ let numPowersOnTossup = request.query["numPowersOnTossup"]
 let numTensOnTossup = request.query["numTensOnTossup"]
 let numNegsOnTossup = request.query["numNegsOnTossup"]
 
-db.updatePlayerScore(numPowersOnTossup, numTensOnTossup, numNegsOnTossup, username, matchID, (results) => {
+routines.updatePlayerScore(numPowersOnTossup, numTensOnTossup, numNegsOnTossup, username, matchID, (results) => {
   response.json(results)
 })
 })
