@@ -19,7 +19,7 @@
     - [Viewing player statistics](#viewing-player-statistics)
   - [*What is Quiz Bowl?*](#what-is-quiz-bowl)
   - [*How did this Project Start?*](#how-did-this-project-start)
-  - [*What Technologies were used?*](#what-technologies-were-used)
+  - [*What Technologies were Used?*](#what-technologies-were-used)
   - [Acknowledgments](#acknowledgments)
 
 
@@ -27,15 +27,15 @@
 
 ### Registering a new player and team
 
-![registration](/images/registration.png)
+![registration](/README_images/registration.png)
 
 ### Generating a question during a match to read to teams
 
-![match](/images/example-tossup.png)
+![match](/README_images/example-tossup.png)
 
 ### Viewing player statistics
 
-![stats](/images/stats.png)
+![stats](/README_images/stats.png)
 
 
 
@@ -55,7 +55,7 @@ This project started during the Fall 2023 iteration of Davidson College's CSC 35
 
 Due to the large enjoyment which he had when playing Quiz Bowl in high school, [Delario Nance, Jr.](#contact-info) wanted to build a Quiz Bowl-related software for his CSC 353 project. To gain more ideas, Nance reached out to [DuBose Tuller](#acknowledgments), who Nance knew had also played Quiz Bowl in high school. Tuller responded by stating that he had already found a partner [Shahin Ahmadi](#acknowledgments) but would be happy to explore Nance's idea. Eventually, Nance, Tuller, and Ahmadi decided to work together to build a Quiz Bowl-related software for their final project. After brainstorming over an software to build, the team ultimately decided to build a full-stack application in which high school Quiz Bowl coaches could: (1) register their players, (2) generate random tossups to read to their players, and (3) record each players' results from matches.
 
-## *What Technologies were used?*
+## *What Technologies were Used?*
 
 - Client Technologies
     - HTML
@@ -64,7 +64,7 @@ Due to the large enjoyment which he had when playing Quiz Bowl in high school, [
 - Server Technologies
     - Node.js
     - Express.js
-    - EJS (Embedded JavaScript)
+    - Embedded JavaScript (EJS)
 - Database Technologies
     - MySQL
 - Additional Technologies
@@ -77,4 +77,4 @@ Due to the large enjoyment which he had when playing Quiz Bowl in high school, [
 - **DuBose Tuller** and **Shahin Ahmadi**, for co-working on the QB Practice Simulator
 - **Dr. Hammurabi Mendes**, for teaching Davidson College's Fall 2023 iteration of CSC 353 (Database Systems), for giving advice on how to design the project's database schema, and for providing a template on creating full-stack web apps with JavaScript
 - **ChatGPT** and **Microsoft Copilot**, for providing CSS snippets for styling and for answering questions about JavaScript syntax
-- **QB Reader**, for providing the API used to generate random tossups during matches
+- **Geoffrey Wu**, for creating the QBReader website whose API was used in this project to generate random tossups during matches
