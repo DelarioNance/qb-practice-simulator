@@ -12,9 +12,9 @@ CREATE TABLE player (
 
 CREATE TABLE team (
 	team_id			INT AUTO_INCREMENT,
-	name			VARCHAR(100) NOT NULL,
+	team_name			VARCHAR(100) NOT NULL,
 	school 			VARCHAR(50),
-
+	
 	PRIMARY KEY (team_id)
 );
 
@@ -25,16 +25,16 @@ CREATE TABLE playsOn (
 	
 	FOREIGN KEY (team_id) 
 		REFERENCES team(team_id),
-
+		
 	FOREIGN KEY (username) 
 		REFERENCES player(username),
-
+		
 	PRIMARY KEY(username, team_id)
 );
 
 CREATE TABLE qb_match(
 	match_id		INT AUTO_INCREMENT,
-	datetime		DATETIME, -- start of match
+	match_datetime		DATETIME, -- start of match
 	home_id			INT,
 	away_id			INT,
 		

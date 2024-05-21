@@ -108,8 +108,6 @@
         var key = localStorage.key(i);
         savedValues[key] = localStorage.getItem(key);
       }
-
-      console.log(savedValues); // Modify this part as needed (e.g., display, process, etc.)
     }
 
     // Function to handle the API call
@@ -121,11 +119,10 @@
         if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
-          console.log("Data received:", data);
           let category = data.tossups[0]["category"];
           let subCategory = data.tossups[0]["subcategory"];
           let tossupText =  data.tossups[0]["question"];
-          let tossupAnswer = data.tossups[0]["formatted_answer"];
+          let tossupAnswer = data.tossups[0]["answer"];
           document.getElementById("tossupText").innerHTML = boldPowerText(tossupText);
           document.getElementById("tossupAnswer").innerHTML = tossupAnswer;
           document.getElementById("tossupCategory").innerText = "- " + category
@@ -185,51 +182,33 @@
     }
 
     function updateScores() {
-      console.log("In updateScores()")
       var table = document.getElementById("playerScoresTable")
       for (var i = 1; i < 6 ; i++) {
         playerRow = table.rows[i]
         
         if (playerRow.cells[0].innerText != "") {
-          console.log("This player exists!")
           homeTeamPlayerCell = playerRow.cells[1]
-          console.log(homeTeamPlayerCell)
           homeTeamPlayerDropdown = homeTeamPlayerCell.getElementsByTagName("select")[0]
-          console.log(homeTeamPlayerDropdown)
           updatePlayerScore(homeTeamPlayerDropdown);
         }
 
         if (playerRow.cells[2].innerText != "") {
-          console.log("This player exists!")
           awayTeamPlayerCell = playerRow.cells[3]
-          console.log(awayTeamPlayerCell)
           awayTeamPlayerDropdown = awayTeamPlayerCell.getElementsByTagName("select")[0]
-          console.log(awayTeamPlayerDropdown)
           updatePlayerScore(awayTeamPlayerDropdown);
         }
       }
 	  }
 
     function updatePlayerScore(playerDropdown) {
-      console.log(playerDropdown)
-      console.log("Updating Score for " + playerDropdown.id)
-
       let playerPoints = playerDropdown.value
-      console.log("playerPoints is " + playerPoints)
-      console.log("Choice was " +  playerDropdown.options[playerDropdown.selectedIndex].text)
-     
-
-      
+           
       let username = playerDropdown.id;
       let matchID = <%= results[0].match_id %> // ignore red lines; still works
 
       let numPowersOnTossup = (playerPoints == 15) ? 1 : 0;
       let numTensOnTossup = (playerPoints == 10) ? 1 : 0;
       let numNegsOnTossup = (playerPoints == -5) ? 1 : 0;
-
-      console.log("NumPowersOnTossup: " + numPowersOnTossup)
-      console.log("NumTensOnTossup: " + numTensOnTossup)
-      console.log("NumNegsOnTossup: " + numNegsOnTossup)
       
       const responsePromise = fetch("/update-player-score/?username=" + username + 
                                                           "&matchID=" + matchID + 
@@ -241,31 +220,7 @@
           "Content-type": "application/json; charset=UTF-8"
         }
       });
-
-      console.log("Updated Score for " + playerDropdown.id)
-      console.log()
     }
-
-      /*
-        for each player:
-          insertPlayerScores(
-            username = get from the id of the table row
-            match_id = get from the match_id passed into the view page
-            num_powers = 1 if player got 15 points
-            num_tens = 1 if power got 10 points
-            num_negs = 1 if power got -5 points
-            num_tossups_heard = 1
-          )
-
-
-      What do we need for the database? 
-      - username - 
-      - match_id - 
-      - num_powers - Increment the value in the database row 
-      - num_tens - 
-      - num_negs - 
-      - num_tossups_heard - 
-      */
 
     // Attach the API call function to the button click event
     document.getElementById('getTossup').addEventListener('click', callAPI);

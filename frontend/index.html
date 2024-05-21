@@ -71,7 +71,6 @@
 		responsePromise.then(
 			async (response) => {
 				let dbResult = await response.json()
-				console.log(dbResult)
 				window.location.replace("/match?matchID=" + dbResult.insertId)
 			},
 			(error) => {
@@ -88,7 +87,6 @@
 			player.innerText = "Name: " + element.name + "; ID: " + element.player_id
 
 			players.appendChild(player)
-			console.log(element)
 		})
 	}
 </script>

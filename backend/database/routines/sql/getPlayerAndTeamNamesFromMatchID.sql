@@ -1,7 +1,7 @@
 SELECT 
 	qb_match.match_id, 
 	playson.username, 
-	team.name 
+	team.team_name 
 FROM 
 	qb_match 
 	INNER JOIN team
@@ -9,5 +9,5 @@ FROM
 	INNER JOIN playson
 		ON team.team_id = playson.team_id 			
 WHERE qb_match.match_id = <match_id> 
-ORDER BY team.name DESC;
+ORDER BY team.team_name DESC;
 
