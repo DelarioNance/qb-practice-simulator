@@ -2,16 +2,16 @@
 
 > A full-stack application to facilitate high school Quiz Bowl practice sessions
 
-## Contact Info.
+## Team Members
 
-- Name: **Delario Nance, Jr.**
-- Email: [**denance@davidson.edu**](mailto:denance@davidson.edu)
-- LinkedIn: [**delario-nance-jr**](https://www.linkedin.com/in/delario-nance-jr/)
+- **Delario Nance, Jr.** ([GitHub](https://github.com/DelarioNance), [LinkedIn](https://www.linkedin.com/in/delario-nance-jr/))
+- **DuBose Tuller** ([GitHub](https://github.com/DuBose-Tuller))
+- **Shahin Ahmadi** ([LinkedIn](https://www.linkedin.com/in/shahinahmadi/))
 
 ## Table of Contents
 
 - [Quiz Bowl Practice Simulator](#quiz-bowl-practice-simulator)
-  - [Contact Info.](#contact-info)
+  - [Team Members](#team-members)
   - [Table of Contents](#table-of-contents)
   - [Screenshots](#screenshots)
     - [Registering a new player and team](#registering-a-new-player-and-team)
@@ -74,7 +74,6 @@ Due to the large enjoyment which he had when playing Quiz Bowl in high school, [
 
 ## Acknowledgments
 
-- **DuBose Tuller** and **Shahin Ahmadi**, for co-working on the QB Practice Simulator
 - **Dr. Hammurabi Mendes**, for teaching Davidson College's Fall 2023 iteration of CSC 353 (Database Systems), for giving advice on how to design the project's database schema, and for providing a template on creating full-stack web apps with JavaScript
 - **ChatGPT** and **Microsoft Copilot**, for providing CSS snippets for styling and for answering questions about JavaScript syntax
 - **Geoffrey Wu**, for creating the QBReader website whose API was used in this project to generate random tossups during matches
