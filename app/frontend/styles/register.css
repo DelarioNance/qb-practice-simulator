@@ -50,13 +50,19 @@ body {
 	margin: 10px;
 }
 
-.registration-grid {
+.registration-grid-container {
   display: grid;
   grid-template-columns: auto auto; /* format is grid-template-columns: col1 col2 ...*/
 }
 
 .grid-item {
   margin: 3px;
+}
+
+/* In a 2D grid, .grid-item:nth-child(odd) styles every cell in the left column because 
+the odd-numbered cells are in the left column */
+.grid-item:nth-child(odd) {
+  text-align: right;
 }
 
 .label-and-input,
