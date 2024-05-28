@@ -16,27 +16,29 @@
 	</div>
 
 	<header id="main-header">
-        <h1>Welcome to Quizbowl!</h1>
-        <p>Test your knowledge in friendly competitions with friends.</p>
-    </header>
+		<h1>Welcome to Quiz Bowl!</h1>
+		<p>Test your knowledge in friendly competitions with friends.</p>
+	</header>
 
 	<section id="content-section">
-        <h1 id="heading-one">Get in teams!</h1>
+		<h1 id="heading-one">Get in teams!</h1>
 		<img src="/images/Quizbowl_icon.jpg" alt="Quizbowl icon" id="sample-image">
 
-		<p>Already registered your teams? Enter the IDs for the two competing teams</p>
+		<p>Already registered your teams? Enter the IDs for the two competing teams!</p>
+		
 		<label for="homeID">Home team: </label>
-		<input type="text" id="homeID" name="homeID" placeholder="(required)" required></input>
-		<br>
+		<input type="text" id="homeID" name="homeID" placeholder="(required)" required><br>
+
 		<label for="awayID">Away team: </label>
-		<input type="text" id="awayID" name="awayID" placeholder="(required)" required></input>
-		<br>
-		<input type="submit" onclick="startGame()"></input>
+		<input type="text" id="awayID" name="awayID" placeholder="(required)" required><br>
 
-		<p>New to the game? register your team:</p>
-		<a href="register.html" target="_blank" id="external-link">Register team</a>
+		<input type="submit" onclick="startGame()">
 
-    </section>
+		<p>New to the game? Register your teams and players via the link below!</p>
+		<a href="register.html" target="_blank" id="external-link">Register</a>
+	</section>
+
+	<script src="./scripts/index.js"></script>
 </body>
 
 </html>

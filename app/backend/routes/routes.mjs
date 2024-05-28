@@ -2,13 +2,18 @@ import { fileURLToPath } from 'url';
 import path, {dirname} from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const dirHTMLFiles = path.join(__dirname,  "../frontend/")
 import express from 'express';
 const router = express.Router();
 
 import * as routines from "../database/routines/js/routines.mjs";
 
 router.get("/", (request, response) => {
-  response.sendFile("index.html")
+  response.sendFile(dirHTMLFiles, "index.html")
+});
+
+router.get("/register", (request, response) => {
+  response.sendFile(path.join(dirHTMLFiles, "register.html"))
 });
 
 // For GET requests to "/player?name=<name>"
