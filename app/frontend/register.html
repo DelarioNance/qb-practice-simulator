@@ -4,25 +4,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register Page</title>
+	<title>QB Practice Simulator - Register</title>
 	<link rel="stylesheet" href="styles/register.css">
 </head>
 
 <body id="main-body">
 	<div id="navbar">
-		<a id="home" href="index.html">Home</a>
-		<a id="playerStats" href="playerStats.html">Player Stats</a>
-    <a id="register" href="register.html">Register</a>
+		<a class="anchor-in-navbar" href="/">Home</a>
+		<a class="anchor-in-navbar" href="/register">Register</a>
+		<a class="anchor-in-navbar" href="/playerStats.html">Stats</a>
 	</div>
 
 <section id="content-section">
-    <h2>New to the game? Register as a new player:</h2>
-    <div class="input-container">
-    <label for="username">Player username: </label>
-    <input type="text" id="username" name="username" placeholder="(required)" required></input>
-    </div>
+    <h2>Player register</h2>
 
     <div class="input-container">
+      <label for="username">Player username: </label>
+      <input type="text" id="username" name="username" placeholder="(required)" required>
+  
       <label for="major">Major: </label>
       <select name="major" id="major" required>
         <option value="" disabled selected>(select)</option>
@@ -30,9 +29,7 @@
         <option value="History">History</option>
         <option value="Literature">Literature</option>
       </select>
-    </div>
 
-    <div class="input-container">
       <label for="minor">Minor: </label>
       <select name="minor" id="minor" required>
         <option value="" disabled selected>(select)</option>
@@ -47,7 +44,7 @@
 
     <br>
     
-    <h2>All members of your team are registered players? Register your team:</h2>
+    <h2>Team register</h2>
     <div class="input-container">
     <label for="P1ID">Team name:</label>
     <input type="text" id="teamName" name="teamName" placeholder="(required)" required>
@@ -87,6 +84,7 @@
     
     <input type="submit" onclick="registerTeam()">
       
+    <script src="./scripts/register.js"></script>
 </section>
 </body>
 

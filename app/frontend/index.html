@@ -4,39 +4,49 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quizbowl homepage</title>
+	<title>QB Practice Simulator</title>
 	<link rel="stylesheet" href="styles/index.css">
 </head>
 
-<body id="main-body">
+<body>
 	<div id="navbar">
-		<a id="home" href="index.html">Home</a>
-		<a id="playerStats" href="playerStats.html">Player Stats</a>
-		<a id="register" href="register.html">Register</a>
+		<a class="anchor-in-navbar" href="/">Home</a>
+		<a class="anchor-in-navbar" href="/register">Register</a>
+		<a class="anchor-in-navbar" href="/playerStats.html">Stats</a>
 	</div>
 
-	<header id="main-header">
-		<h1>Welcome to Quiz Bowl!</h1>
-		<p>Test your knowledge in friendly competitions with friends.</p>
-	</header>
+	<div id="welcome">
+		<h1>QB Practice Simulator</h1>
+		<p>A tool for simulating quiz bowl practice sessions</p>
+	</div>
 
-	<section id="content-section">
-		<h1 id="heading-one">Get in teams!</h1>
-		<img src="/images/Quizbowl_icon.jpg" alt="Quizbowl icon" id="sample-image">
-
-		<p>Already registered your teams? Enter the IDs for the two competing teams!</p>
+	<div id="main-body">	
+		<div class="flex-container">
+			<div class="flex-item">
+				<h3>Already registered your teams?</h3>
+				<p>Start a match by entering the team IDs below.</p>
+				
+				<div class="label-and-input">
+					<label for="homeID">Team 1:</label>
+					<input type="text" id="homeID" name="homeID" placeholder="(required)" required>
+				</div>
 		
-		<label for="homeID">Home team: </label>
-		<input type="text" id="homeID" name="homeID" placeholder="(required)" required><br>
+				<div class="label-and-input">
+					<label for="awayID">Team 2:</label>
+					<input type="text" id="awayID" name="awayID" placeholder="(required)" required>
+				</div>
 
-		<label for="awayID">Away team: </label>
-		<input type="text" id="awayID" name="awayID" placeholder="(required)" required><br>
+				<input type="submit" onclick="startGame()" value="Start Match"><br><br>
+			</div>
 
-		<input type="submit" onclick="startGame()">
+			<img id="qb-icon" class="flex-item" src="/images/Quizbowl_icon.jpg" alt="Quizbowl icon" id="qb-image">
 
-		<p>New to the game? Register your teams and players via the link below!</p>
-		<a href="register.html" target="_blank" id="external-link">Register</a>
-	</section>
+			<div class="flex-item">
+				<h3>Haven't registered your teams or players?</h3>
+				<p>Register them <a href="/register">here</a>!</p>
+			</div>
+		</div>
+	</div>
 
 	<script src="./scripts/index.js"></script>
 </body>
