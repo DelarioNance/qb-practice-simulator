@@ -4,88 +4,87 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>QB Practice Simulator - Register</title>
+	<title>QB Practice Simulator - Registration</title>
 	<link rel="stylesheet" href="styles/register.css">
 </head>
 
-<body id="main-body">
+<body>
 	<div id="navbar">
 		<a class="anchor-in-navbar" href="/">Home</a>
 		<a class="anchor-in-navbar" href="/register">Register</a>
 		<a class="anchor-in-navbar" href="/playerStats.html">Stats</a>
 	</div>
 
-<section id="content-section">
-    <h2>Player register</h2>
+  <div id="welcome">
+		<h1>QB Practice Simulator</h1>
+		<p>A tool for simulating quiz bowl practice sessions</p>
+	</div>
 
-    <div class="input-container">
-      <label for="username">Player username: </label>
-      <input type="text" id="username" name="username" placeholder="(required)" required>
+  <div id="main-body">
+    <div class="flex-container">
+      <div class="flex-item">
+        <h2>Player Registration</h2>
+
+        <div class="registration-grid">
+          <label class="grid-item" for="username">Name:</label>
+          <input class="grid-item" type="text" id="username" name="username" placeholder="(required)" required>
+
+          <label class="grid-item" for="major">Major:</label>
+          <select class="grid-item" name="major" id="major" required>
+            <option value="" disabled selected>(select)</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+            <option value="Literature">Literature</option>
+          </select>
+
+          <label class="grid-item" for="minor">Minor:</label>
+          <select class="grid-item" name="minor" id="minor" required>
+            <option value="" disabled selected>(select)</option>
+            <option value="RMP">Religion, Mythology, and Philosophy (RMP)</option>
+            <option value="Geography">Geography and Social Science (GSS)</option>
+            <option value="FA">Fine Arts (FA)</option>
+            <option value="Trash">Trash</option>
+          </select>
+        </div>
   
-      <label for="major">Major: </label>
-      <select name="major" id="major" required>
-        <option value="" disabled selected>(select)</option>
-        <option value="Science">Science</option>
-        <option value="History">History</option>
-        <option value="Literature">Literature</option>
-      </select>
+        <input type="submit" onclick="registerPlayer()" value="Create Player">
+      </div>    
 
-      <label for="minor">Minor: </label>
-      <select name="minor" id="minor" required>
-        <option value="" disabled selected>(select)</option>
-        <option value="RMP">Religion, Mythology, and Philosophy</option>
-        <option value="Geography">Geography</option>
-        <option value="FA">Fine Arts</option>
-        <option value="Trash">Trash</option>
-      </select>
-    </div>
+      <div class="flex-item">
+        <h2>Team Registration</h2>
 
-    <input type="submit" onclick="registerPlayer()"></input>
+        <div class="registration-grid">
+          <label class="grid-item" for="P1ID">Team name:</label>
+          <input class="grid-item" type="text" id="teamName" name="teamName" placeholder="(required)" required>
 
-    <br>
-    
-    <h2>Team register</h2>
-    <div class="input-container">
-    <label for="P1ID">Team name:</label>
-    <input type="text" id="teamName" name="teamName" placeholder="(required)" required>
-    </div>
+          <label class="grid-item" for="P1ID">School:</label>
+          <input class="grid-item" type="text" id="school" name="school" placeholder="(required)" required>
 
-    <div class="input-container">
-    <label for="P1ID">School:</label>
-    <input type="text" id="school" name="school" placeholder="(required)" required>
-    </div>
+          <label class="grid-item" for="P1ID">Player 1 username:</label>
+          <input class="grid-item" type="text" id="P1ID" name="P1ID" placeholder="(required)" required>
 
-    <div class="input-container">
-    <label for="P1ID">Player 1 username:</label>
-    <input type="text" id="P1ID" name="P1ID" placeholder="(required)" required>
-    </div>
+          <label class="grid-item" for="P2ID">Player 2 username:</label>
+          <input class="grid-item" type="text" id="P2ID" name="P2ID" placeholder="(optional)">
     
-    <div class="input-container">
-    <label for="P2ID">Player 2 username:</label>
-    <input type="text" id="P2ID" name="P2ID" placeholder="(optional)">
-    </div>
-    
-    <div class="input-container">
-    <label for="P3ID">Player 3 username:</label>
-    <input type="text" id="P3ID" name="P3ID" placeholder="(optional)">
-    </div>
-    
-    <div class="input-container">
-    <label for="P4ID">Player 4 username:</label>
-    <input type="text" id="P4ID" name="P4ID" placeholder="(optional)">
-    </div>
-    
-    <div class="input-container">
-    <label for="P5ID">Player 5 username:</label>
-    <input type="text" id="P5ID" name="P5ID" placeholder="(optional)">
-    </div>
-    
-    <div class="clearfix"></div>
-    
-    <input type="submit" onclick="registerTeam()">
+          <label class="grid-item" for="P3ID">Player 3 username:</label>
+          <input class="grid-item" type="text" id="P3ID" name="P3ID" placeholder="(optional)">
       
-    <script src="./scripts/register.js"></script>
-</section>
-</body>
+          <label class="grid-item" for="P4ID">Player 4 username:</label>
+          <input class="grid-item" type="text" id="P4ID" name="P4ID" placeholder="(optional)">
+        
+          <label class="grid-item" for="P5ID">Player 5 username:</label>
+          <input class="grid-item" type="text" id="P5ID" name="P5ID" placeholder="(optional)">
+        </div>
 
+        <input type="submit" onclick="registerTeam()" value="Create Team">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+		<p id="copyright-message">&copy; 2024 QB Practice Simulator. All rights reserved.</p>
+	</footer>
+
+  <script src="./scripts/register.js"></script>
+</body>
 </html>
