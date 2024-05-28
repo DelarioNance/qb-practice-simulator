@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QB Practice Simulator - Stats</title>
+	<link rel="stylesheet" href="styles/stats.css">
+</head>
+
+<body>
+	<div id="navbar">
+		<a class="anchor-in-navbar" href="/">Home</a>
+		<a class="anchor-in-navbar" href="/register">Register</a>
+		<a class="anchor-in-navbar" href="/stats">Stats</a>
+	</div>
+
+	<div id="welcome">
+		<h1>QB Practice Simulator</h1>
+		<p>A tool for simulating quiz bowl practice sessions</p>
+	</div>
+
+	<div id="main-body">
+		<h2>Player Stats</h2>
+
+		<div class="flex-container">
+			<div id="player-label-and-input" class="flex-item">
+				<label for="playerID">Player Name:</label>
+				<input type="text" id="playerID" name="playerID">
+			</div>
+			
+			<input class="flex-item" type="submit" onclick="fetchplayerStats()" value="Get Stats">
+		</div>
+
+		<table id="stats-table">
+			<tr>
+				<th>Match ID</th>
+				<th>Powers</th>
+				<th>Tens</th>
+				<th>Negs</th>
+				<th>TUH</th>
+				<th>% Correct</th>
+			</tr>	
+		</table>
+	</div>
+
+	<footer>
+		<p id="copyright-message">&copy; 2024 QB Practice Simulator. All rights reserved.</p>
+	</footer>
+
+	<script src="./scripts/stats.js"></script>
+</body>
+
+</html>

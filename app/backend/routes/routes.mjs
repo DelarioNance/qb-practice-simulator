@@ -16,6 +16,10 @@ router.get("/register", (request, response) => {
   response.sendFile(path.join(dirHTMLFiles, "register.html"))
 });
 
+router.get("/stats", (request, response) => {
+  response.sendFile(path.join(dirHTMLFiles, "stats.html"))
+});
+
 // For GET requests to "/player?name=<name>"
 router.get('/player', function(request, response){
   let name = request.query["name"]
@@ -54,7 +58,7 @@ router.get("/register", function(request, response) {
   response.sendFile("register.html")
 });
 
-router.get("/stats", function(request, response) {
+router.get("/player-stats", function(request, response) {
   let playerID = request.query["playerID"];
 
   routines.getPlayerStats(playerID, (results) => {

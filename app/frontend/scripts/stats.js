@@ -2,7 +2,7 @@ async function fetchplayerStats() {
   let playerID = document.getElementById("playerID").value;
 
   try {
-    const response = await fetch("/stats?playerID=" + playerID, {
+    const response = await fetch("/player-stats?playerID=" + playerID, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8"
@@ -25,7 +25,7 @@ async function fetchplayerStats() {
 
   function populateplayerStats(results) {
   const stats = convertObjectToArray(results);
-      let statsTable = document.getElementById("playerStatsTable")
+      let statsTable = document.getElementById("stats-table")
 
   // Clear existing rows (except header)
   var rowCount = statsTable.rows.length;
