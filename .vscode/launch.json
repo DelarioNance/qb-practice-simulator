@@ -8,7 +8,7 @@
 			"type": "node",
 			"name": "Backend - Server",
 			"request": "launch",
-			"program": "${workspaceFolder}/app/backend/server.mjs",
+			"program": "${workspaceFolder}/app/server.mjs",
 			"skipFiles": [
 								"<node_internals>/**"
 							],
