@@ -1,11 +1,6 @@
 /**
- * This script contains the JavaScript functions used by the index 
- * page.
- */
-
-/**
  * Creates a new match in the database between the user-inputted 
- * teams and sends the page of the newly created match.
+ * teams and sends the user to the page of the newly created match.
  */
 async function startMatch() {
     const home = document.getElementById("homeID").value
@@ -15,8 +10,11 @@ async function startMatch() {
     const response = await fetch(`/match/?homeID=${home}&awayID=${away}`, {
         method: "POST"
     });
+    const idOfNewMatch = await response.json().insertId;
 
-    // Redirect the user to the match page
-    const dbResult = await response.json();
-    window.location.assign("/match?matchID=" + dbResult.insertId)
+    // window.location.assign is used instead of HTML form since the 
+    // user is being sent to an HTML template rather than a static 
+    // HTML page. If an HTML form was used instead, then it would be 
+    // more difficult to pass data into the match template.
+    window.location.assign(`/match?matchID=${idOfNewMatch}`)
 }
