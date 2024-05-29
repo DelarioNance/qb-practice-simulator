@@ -10,8 +10,8 @@ async function startMatch() {
     const responsePromise = await fetch(`/match/?homeID=${home}&awayID=${away}`, {
         method: "POST"
     });
-    const insertedMatchId = await responsePromise.json().insertId;
-    console.log(insertedMatchId);
+    const responseData = await responsePromise.json(); // returns a Promise
+    const insertedMatchId = responseData.insertId;
 
     // window.location.assign is used instead of HTML form since the 
     // user is being sent to an HTML template rather than a static 
