@@ -1,49 +1,22 @@
-function fetchPlayers() {
-  let name = document.getElementById("playerName").value
-  const responsePromise = fetch("/player?name=" + name, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  });
+/**
+ * This script contains the JavaScript functions used by the index 
+ * page.
+ */
 
-  responsePromise.then(
-    async (response) => {
-      populateListPlayer(await response.json())
-    },
-    (error) => {
-      alert("Cannot obtain players")
-    })
-}
+/**
+ * Creates a new match in the database between the user-inputted 
+ * teams and sends the page of the newly created match.
+ */
+async function startMatch() {
+    const home = document.getElementById("homeID").value
+    const away = document.getElementById("awayID").value
 
-function startGame() {
-  let home = document.getElementById("homeID").value
-  let away = document.getElementById("awayID").value
-  const responsePromise = fetch("/create-match/?homeID=" + home + "&awayID=" + away, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  });
+    // Create a new match in the database
+    const response = await fetch(`/match/?homeID=${home}&awayID=${away}`, {
+        method: "POST"
+    });
 
-  responsePromise.then(
-    async (response) => {
-      let dbResult = await response.json()
-      window.location.replace("/match?matchID=" + dbResult.insertId)
-    },
-    (error) => {
-      alert("Failed to start match")
-      console.log(error)
-    })
-}
-
-function populateListPlayer(results) {
-  let players = document.getElementById("playerList")
-
-  results.forEach(element => {
-    let player = document.createElement("li")
-    player.innerText = "Name: " + element.name + "; ID: " + element.player_id
-
-    players.appendChild(player)
-  })
+    // Redirect the user to the match page
+    const dbResult = await response.json();
+    window.location.assign("/match?matchID=" + dbResult.insertId)
 }
