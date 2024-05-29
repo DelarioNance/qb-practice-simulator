@@ -65,7 +65,7 @@ function insertIntoPlaysOn(playerUsername, teamID) {
 };
 
 function initializePlayerScore(username, matchID) {
-	connection.query("INSERT INTO plays VALUES (?, ?, 0, 0, 0, 0)", [username, matchID])
+	connection.query("INSERT INTO plays VALUES (?, ?, 0, 0, 0, -1)", [username, matchID])
 };
 
 function updatePlayerScore(numPowersOnTossup, numTensOnTossup, numNegsOnTossup, username, matchID, callback) {
