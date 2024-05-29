@@ -1,7 +1,7 @@
 /**
  * This file acts as the entry point to the QB Practice Simulator 
- * application. When this file is ran, its main function starts up 
- * the application server.
+ * application. When this file is ran, this file attemps to start the
+ * application server.
  */
 
 import express from 'express';
@@ -17,27 +17,23 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = 3001;
 
-function main() {
-    // Specify templating engine
-    app.set('view engine', 'ejs');
+// Specify templating engine
+app.set('view engine', 'ejs');
 
-    // Specify location of HTML template files
-    app.set('views', path.join(__dirname, "views"));
+// Specify location of HTML template files
+app.set('views', path.join(__dirname, "views"));
 
-    // Specify location of static files (e.g., CSS, JS, image, and static HTML files)
-    app.use(express.static(path.join(__dirname,  "frontend")));
+// Specify location of static files (e.g., CSS, JS, image, and static HTML files)
+app.use(express.static(path.join(__dirname,  "frontend")));
 
-    // Specify route handling
-    app.use('/', routes);
+// Specify route handling
+app.use('/', routes);
 
-    // Start server
-    app.listen(PORT, () => {
-        console.log('Server is starting on port,', PORT)
-    })
+// Start server
+app.listen(PORT, () => {
+    console.log('Server is starting on port,', PORT)
+})
 
-    process.on('exit', () => {
-        console.log('Server is stopping')
-    })
-}
-
-main();
+process.on('exit', () => {
+    console.log('Server is stopping')
+})
