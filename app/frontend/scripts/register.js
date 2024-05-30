@@ -1,3 +1,5 @@
+import { getValueById } from "./utils.js";
+
 /**
  * Creates a new player in the database from the user-inputted 
  * player fields.
@@ -22,6 +24,13 @@ async function registerPlayer() {
     );
 }
 
+// Since this file uses an import statement, this file is treated as 
+// a "module." However, by default, top-level functions in modules are 
+// not accessible to the HTML file(s) which those modules are linked 
+// to. Therefore, the line below is used to add the corresponding 
+// function to global scope of the browser's JavaScript environment.
+window.registerPlayer = registerPlayer;
+
 /**
  * Creates a new team in the database from the user-inputted 
  * team fields.
@@ -37,7 +46,7 @@ async function registerTeam() {
         P3: getValueById("P3ID"),
         P4: getValueById("P4ID"),
         P5: getValueById("P5ID"),
-    })
+    });
 
     const responseObject = await fetch(`/team/?${params.toString()}`, {
         method: "POST",
@@ -49,15 +58,12 @@ async function registerTeam() {
         `Your new team's ID is ${insertedTeamId}. Please save it somewhere! ` +
         "You can now return to the home page to start a match or " +
         "stay on this page to create new teams and players."
-    )
+    );
 }
 
-/**
- * Returns the value of the first HTML element with the specified ID.
- * @param {string} elementId The ID of the HTML element
- * @returns The value of the first HTML element with the specified 
- * ID
- */
-function getValueById(elementId) {
-    return document.getElementById(elementId).value;
-}
+// Since this file uses an import statement, this file is treated as 
+// a "module." However, by default, top-level functions in modules are 
+// not accessible to the HTML file(s) which those modules are linked 
+// to. Therefore, the line below is used to add the corresponding 
+// function to global scope of the browser's JavaScript environment.
+window.registerTeam = registerTeam;

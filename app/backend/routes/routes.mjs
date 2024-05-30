@@ -58,9 +58,9 @@ router.post("/match", function (request, response) {
 });
 
 router.get("/player-stats", function (request, response) {
-    let playerID = request.query["playerID"];
+    let username = request.query["name"];
 
-    routines.getPlayerStats(playerID, (results) => {
+    routines.getPlayerStats(username, (results) => {
         response.json(results)
     });
 

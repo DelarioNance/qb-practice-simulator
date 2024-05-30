@@ -25,11 +25,11 @@
 
 		<div class="flex-container">
 			<div id="player-label-and-input" class="flex-item">
-				<label for="playerID">Player Name:</label>
-				<input type="text" id="playerID" name="playerID">
+				<label for="username">Player Name:</label>
+				<input type="text" id="username" name="username">
 			</div>
 			
-			<input class="flex-item" type="submit" onclick="fetchplayerStats()" value="Get Stats">
+			<input class="flex-item" type="submit" onclick="displayPlayerStats()" value="Get Stats">
 		</div>
 
 		<table id="stats-table">
@@ -48,7 +48,9 @@
 		<p id="copyright-message">&copy; 2024 QB Practice Simulator. All rights reserved.</p>
 	</footer>
 
-	<script src="./scripts/stats.js"></script>
+  <!-- type="module" is used to link JavaScipt modules 
+    (i.e., JavaScript files which use import statements) -->
+	<script src="./scripts/stats.js" type="module"></script>
 </body>
 
 </html>
