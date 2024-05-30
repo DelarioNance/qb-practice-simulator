@@ -5,6 +5,7 @@
  */
 
 import express from 'express';
+import favicon from 'serve-favicon';
 import { fileURLToPath } from 'url';
 import path, {dirname} from 'path';
 import routes from "./backend/routes/routes.mjs";
@@ -28,6 +29,9 @@ app.use(express.static(path.join(__dirname,  "frontend")));
 
 // Specify route handling
 app.use('/', routes);
+
+// Specify favicon
+app.use(favicon(path.join(__dirname,  "frontend", "images", "favicon_io", "favicon.ico")));
 
 // Start server
 app.listen(PORT, () => {

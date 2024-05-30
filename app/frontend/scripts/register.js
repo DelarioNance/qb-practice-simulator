@@ -1,25 +1,21 @@
-function registerPlayer() {
-  let username = document.getElementById("username").value
-  let major = document.getElementById("major").value
-  let minor = document.getElementById("minor").value
-  const responsePromise = fetch("/create-player/?" + "username=" + username + "&major=" + major + "&minor=" + minor, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
+/**
+ * Creates a new player in the database from the user-inputted 
+ * player fields.
+ */
+async function registerPlayer() {
+  const name = document.getElementById("username").value;
+  const major = document.getElementById("major").value;
+  const minor = document.getElementById("minor").value;
+
+  await fetch(`/player/?username=${name}&major=${major}&minor=${minor}`, {
+    method: "POST",
   });
 
-  responsePromise.then(
-    // Fulfilled
-    async (response) => {
-      let playerResult = await response.json()
-      alert("Successfully added " + username + " with major " + major + " and minor " + minor + "! You can now return to the homepage to start a match or stay on this page to create new teams and players.")
-    },
-    // Error
-    (error) => {
-      alert("Failed to add player. Make sure that the username is unique.")
-      console.log(error)
-    })
+  // TODO: Use the data which was actually inserted in the database
+  // instead of the data that I expect was inserted in the database
+  alert(`Successfully added ${name} with major ${major} and minor ${minor}! ` +
+        "You can now return to the homepage to start a match or stay on this " + 
+        "page to create new teams and players.");
 }
 
 function registerTeam() {
