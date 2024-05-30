@@ -67,7 +67,7 @@ router.get("/player-stats", function (request, response) {
 });
 
 router.post("/player", function (request, response) {
-    let username = request.query["username"]
+    let username = request.query["name"]
     let major = request.query["major"]
     let minor = request.query["minor"]
 

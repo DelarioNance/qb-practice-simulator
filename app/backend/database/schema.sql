@@ -5,7 +5,7 @@ USE dbQuizBowl;
 CREATE TABLE player (
 	username		VARCHAR(100),
 	major			VARCHAR(25) CHECK (major IN ('Science', 'History', 'Literature')),
-	minor			VARCHAR(25) CHECK (minor IN ('RMP', 'Geography', 'FA', 'Trash')),
+	minor			VARCHAR(25) CHECK (minor IN ('RMP', 'GSS', 'FA', 'Trash')),
 	 	
 	PRIMARY KEY (username)	
 );

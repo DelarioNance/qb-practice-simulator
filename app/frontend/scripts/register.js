@@ -3,18 +3,20 @@
  * player fields.
  */
 async function registerPlayer() {
-    const name = document.getElementById("username").value;
-    const major = document.getElementById("major").value;
-    const minor = document.getElementById("minor").value;
+    const params = new URLSearchParams({
+        name: getValueById("username"),
+        major: getValueById("major"),
+        minor: getValueById("minor")
+    });
 
-    await fetch(`/player/?username=${name}&major=${major}&minor=${minor}`, {
+    await fetch(`/player/?${params.toString()}`, {
         method: "POST",
     });
 
     // TODO: Use the data which was actually inserted in the database
     // instead of the data that I expect was inserted in the database
     alert(
-        `Successfully added ${name} with major ${major} and minor ${minor}! ` +
+        `Successfully added ${params.get("name")} with major ${params.get("major")} and minor ${params.get("minor")}! ` +
         "You can now return to the homepage to start a match or stay on this " +
         "page to create new teams and players."
     );
