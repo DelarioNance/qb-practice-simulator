@@ -79,7 +79,7 @@ router.post("/player", function (request, response) {
 
 // Calls routines.create_team() and then routines.insertIntoPlaysOn 
 //    for each non-null player entered from the form
-router.get("/create-team", function (request, response) {
+router.post("/team", function (request, response) {
     let name = request.query["name"]
     let school = request.query["school"]
     let playerUsernames = [
